@@ -12,11 +12,10 @@ if MODE not in ("mock", "nipost"):
     raise RuntimeError("POSTPROOF_MODE must be 'mock' or 'nipost'")
 
 if MODE == "nipost" and not API_KEY:
-    raise RuntimeError("POSTPROOF_MODE=nipost needs NIPOST_API_KEY in your .env file")
+    raise RuntimeError("NIPOST_API_KEY is missing from .env")
 
 
 def source_label() -> str:
-    """Tells the caller where the answer came from (shown in the demo)."""
     if MODE == "mock":
         return "mock"
     if API_KEY.startswith("nipost_test_"):
